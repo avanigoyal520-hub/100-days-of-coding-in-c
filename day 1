@@ -1,61 +1,59 @@
-que1 Write a program to check if a number is an Armstrong number.
-
+Q33: Armstrong Number Check
+code:
 #include <stdio.h>
-int main ()
-{
-    int num, originalNum, remainder, result = 0, n = 0;
+#include <math.h>
+
+int main() {
+    int num, originalNum, remainder, digits = 0, sum = 0;
 
     printf("Enter an integer: ");
     scanf("%d", &num);
 
     originalNum = num;
-
-    // store the number of digits of num in n
-    for (originalNum = num; originalNum != 0; ++n) {
+    while (originalNum != 0) {
         originalNum /= 10;
+        digits++;
     }
 
     originalNum = num;
-
-    // calculate the sum of the nth power of each digit
     while (originalNum != 0) {
         remainder = originalNum % 10;
-        result += pow(remainder, n);
+        sum += round(pow(remainder, digits)); 
         originalNum /= 10;
     }
-
-    // check if num is equal to the sum of the nth power of its digits
-    if (result == num)
-        printf("%d is an Armstrong number.", num);
-    else
-        printf("%d is not an Armstrong number.", num);
+    if (sum == num) {
+        printf("%d is an Armstrong number.\n", num);
+    } else {
+        printf("%d is not an Armstrong number.\n", num);
+    }
 
     return 0;
 }
 
-
-que 2 write a program to check if a number is prime
+Q34: Prime Number Check
+code:
 #include <stdio.h>
 
 int main() {
-    int n, i, prime = 1;
-    scanf("%d", &n);
+    int num, i, isPrime = 1;
 
-    if (n <= 1)
-        prime = 0;
-    else {
-        for (i = 2; i <= n / 2; i++) {
-            if (n % i == 0) {
-                prime = 0;
-                break;
+    printf("Enter a positive integer: ");
+    scanf("%d", &num);
+    if (num <= 1) {
+        isPrime = 0;
+    } else {
+        for (i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                isPrime = 0; 
+                break;     
             }
         }
     }
-
-    if (prime)
-        printf("Prime");
-    else
-        printf("Not prime");
+    if (isPrime == 1) {
+        printf("%d is a prime number.\n", num);
+    } else {
+        printf("%d is not a prime number.\n", num);
+    }
 
     return 0;
 }
