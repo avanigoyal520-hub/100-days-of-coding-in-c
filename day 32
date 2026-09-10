@@ -1,0 +1,65 @@
+Q. Merge two arrays.
+
+#include <stdio.h>
+int main()
+{
+    int n1,n2;
+    printf("Enter the size of the first array: ");
+    scanf("%d", &n1);
+    printf("Enter the size of the second array: ");
+    scanf("%d", &n2);
+    int arr1[n1], arr2[n2], merged[n1+n2];
+    printf("Enter %d numbers for the first array: ", n1);
+    for(int i = 0; i < n1; i++)
+    scanf("%d", &arr1[i]);
+    printf("Enter %d numbers for the second array: ", n2);
+    for(int i = 0; i < n2; i++)
+    scanf("%d", &arr2[i]);
+    for(int i = 0; i < n1; i++)
+    merged[i] = arr1[i];
+    for(int i = 0; i < n2; i++)
+    merged[n1+i] = arr2[i];
+    printf("The merged array is: ");
+    for(int i = 0; i < n1+n2; i++)
+    printf("%d ", merged[i]);
+    return 0;
+}
+
+Q. Find the digit that occurs the most times in an integer number.
+
+#include <stdio.h>
+int main()
+{
+    int n, N, d, md = 0, max = 0, count, digits = 0, temp;
+    printf("Enter an integer: ");
+    scanf("%d", &n);
+    if (n < 0)
+        n = -n;
+    temp = n;
+    do
+    {
+        digits++;
+        temp /= 10;
+    } while (temp != 0);
+    temp = n;
+    for (int i = 0; i < digits; i++)
+    {
+        d = temp % 10;
+        temp /= 10;
+        count = 0;
+        N = n;
+        for (int j = 0; j < digits; j++)
+        {
+            if (d == N % 10)
+                count++;
+            N /= 10;
+        }
+        if (count > max)
+        {
+            max = count;
+            md = d;
+        }
+    }
+    printf("The digit %d occurs %d times.", md, max);
+    return 0;
+}
