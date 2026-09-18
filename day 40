@@ -1,0 +1,107 @@
+Q.Perform diagonal traversal of a matrix.
+
+int main()
+{
+    int m;
+    printf("Enter the order of matrix: ");
+    scanf("%d",&m);
+    int arr[m][m];
+    printf("Enter elements of the array: ");
+    for(int i=0;i<m;i++)
+    {
+        for(int j = 0; j < m; j++)
+        scanf("%d", &arr[i][j]);
+    }
+    printf("The Original Matrix: \n");
+    for(int i=0;i<m;i++)
+    {
+        for(int j = 0; j < m; j++)
+        printf("%d ",arr[i][j]);
+        printf("\n");
+    }
+    printf("The diagonal traversal of the matrix: \n");
+    for (int d = 0; d < 2*m - 1; d++)
+    {
+        for (int i = 0; i < m; i++)
+        {
+            int j = d - i;
+            if (j >= 0 && j < m)
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+Q.Multiply two matrices.
+
+#include <stdio.h>
+
+int main()
+{
+    int m1, n1, m2, n2;
+    printf("Enter the number of rows & columns in the 1st matrix: ");
+    scanf("%d %d", &m1, &n1);
+    printf("Enter the number of rows & columns in the 2nd matrix: ");
+    scanf("%d %d", &m2, &n2);
+
+    int arr1[m1][n1];
+    int arr2[m2][n2];
+    int arr3[m1][n2];
+
+    printf("Enter elements of the 1st matrix: ");
+    for (int i = 0; i < m1; i++)
+    {
+        for (int j = 0; j < n1; j++)
+            scanf("%d", &arr1[i][j]);
+    }
+
+    printf("Enter elements of the 2nd matrix: ");
+    for (int i = 0; i < m2; i++)
+    {
+        for (int j = 0; j < n2; j++)
+            scanf("%d", &arr2[i][j]);
+    }
+
+    printf("The Original Matrix-1: \n");
+    for (int i = 0; i < m1; i++)
+    {
+        for (int j = 0; j < n1; j++)
+            printf("%d ", arr1[i][j]);
+        printf("\n");
+    }
+
+    printf("The Original Matrix-2: \n");
+    for (int i = 0; i < m2; i++)
+    {
+        for (int j = 0; j < n2; j++)
+            printf("%d ", arr2[i][j]);
+        printf("\n");
+    }
+
+    if (n1 == m2)
+    {
+        for (int i = 0; i < m1; i++)
+        {
+            for (int j = 0; j < n2; j++)
+            {
+                arr3[i][j] = 0;
+                for (int k = 0; k < n1; k++)
+                {
+                    arr3[i][j] += arr1[i][k] * arr2[k][j];
+                }
+            }
+        }
+
+        printf("Matrix after multiplication: \n");
+        for (int i = 0; i < m1; i++)
+        {
+            for (int j = 0; j < n2; j++)
+                printf("%d ", arr3[i][j]);
+            printf("\n");
+        }
+    }
+    else
+        printf("Matrices not compatible for multiplication\n");
+
+    return 0;
+}
